@@ -172,7 +172,7 @@ class App:
                 with gr.Column(scale=1):
                     logs = gr.HTML()
                 with gr.Column(scale=1):
-                    plot = gr.Plot(value=get_plot(), show_label=False)
+                    gr.Plot(value=get_plot(), show_label=False)
 
             ui.load(
                 run_with_logging,

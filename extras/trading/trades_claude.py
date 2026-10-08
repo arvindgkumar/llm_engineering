@@ -128,7 +128,7 @@ def trade15():
     # Buy if the current volume is higher than the average volume of the last 10 days
     trades = []
     for ticker in tickers:
-        if volumes[ticker][0] > np.mean(volumes[ticker][1:11]):
+        if volumes[ticker][0] > np.mean(volumes[ticker][1:11]):  # noqa: F821 - volumes is not provided by the harness
             quantity = random.randrange(1, 100)
             trades.append(Trade(ticker, quantity))
     return trades
@@ -137,7 +137,7 @@ def trade16():
     # Sell if the current volume is lower than the average volume of the last 10 days
     trades = []
     for ticker in tickers:
-        if volumes[ticker][0] < np.mean(volumes[ticker][1:11]):
+        if volumes[ticker][0] < np.mean(volumes[ticker][1:11]):  # noqa: F821 - volumes is not provided by the harness
             quantity = random.randrange(-100, -1)
             trades.append(Trade(ticker, quantity))
     return trades

@@ -1,10 +1,6 @@
 import numpy as np
-from tqdm.notebook import tqdm
 import torch
 import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import DataLoader, TensorDataset
-from torch.optim.lr_scheduler import CosineAnnealingLR
 from sklearn.feature_extraction.text import HashingVectorizer
 import logging
 

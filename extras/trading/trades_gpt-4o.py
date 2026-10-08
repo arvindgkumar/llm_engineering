@@ -9,6 +9,7 @@ import Trade
 
 import random
 import numpy as np
+import scipy.stats
 
 def trade2():
     # Buy top performing stock in the last 5 days
@@ -870,7 +871,6 @@ def trade118():
 def trade119():
     # Buy stocks that have shown a positive correlation with the market trend over the last 20 days
     market_total = [sum(prices[ticker][i] for ticker in tickers) for i in range(20)]
-    market_trend = scipy.stats.linregress(range(20), market_total).slope
     positive_corr_tickers = [ticker for ticker in tickers if scipy.stats.pearsonr(prices[ticker][:20], market_total)[0] > 0.5]
     trades = [Trade(ticker, 100) for ticker in random.sample(positive_corr_tickers, min(3, len(positive_corr_tickers)))]
     return trades
@@ -878,7 +878,6 @@ def trade119():
 def trade120():
     # Sell stocks that have shown a negative correlation with the market trend over the last 20 days
     market_total = [sum(prices[ticker][i] for ticker in tickers) for i in range(20)]
-    market_trend = scipy.stats.linregress(range(20), market_total).slope
     negative_corr_tickers = [ticker for ticker in tickers if scipy.stats.pearsonr(prices[ticker][:20], market_total)[0] < -0.5]
     trades = [Trade(ticker, -100) for ticker in random.sample(negative_corr_tickers, min(3, len(negative_corr_tickers)))]
     return trades
